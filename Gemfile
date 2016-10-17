@@ -19,9 +19,14 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'better_errors'
   gem 'rails_layout'
+  gem "binding_of_caller"
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'bootstrap-sass'
 gem 'simple_form'
+gem 'faker'
+gem 'devise'
+
+gem 'active_model_serializers'

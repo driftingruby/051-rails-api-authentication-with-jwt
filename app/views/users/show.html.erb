@@ -1,0 +1,38 @@
+<p>
+  <strong>First name:</strong>
+  <%= @user.first_name %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= @user.last_name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+
+<p><strong>Phone Numbers:</strong></p>
+<table class='table table-bordered table-striped table-hover'>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Phone number</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @user.phones.each do |phone| %>
+      <tr>
+        <td><%= phone.name %></td>
+        <td><%= phone.phone_number %></td>
+        <td><%= link_to 'Edit', edit_user_phone_path(@user, phone) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'New Phone', new_user_phone_path(@user) %>

@@ -1,0 +1,39 @@
+<%= simple_form_for(@user) do |f| %>
+
+  <div class="form-inputs">
+    <%= f.input :first_name %>
+    <%= f.input :last_name %>
+    <%= f.input :email %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
+
+<% if @user.new_record? %>
+  <p>Save user before adding phone numbers</p>
+<% else %>
+<p>
+  <table class='table table-bordered table-striped table-hover'>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Phone number</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @user.phones.each do |phone| %>
+        <tr>
+          <td><%= phone.name %></td>
+          <td><%= phone.phone_number %></td>
+          <td><%= link_to 'Edit', edit_user_phone_path(@user, phone) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= link_to 'New Phone', new_user_phone_path(@user) %>
+</p>
+<% end %>

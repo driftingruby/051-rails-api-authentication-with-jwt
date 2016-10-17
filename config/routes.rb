@@ -1,5 +1,14 @@
 Rails.application.routes.draw do
-  root 'visitors#index'
+  devise_for :users
+  namespace :api, path: '/', constraints: { subdomain: 'api' } do
+    resources :users
+    
+  end
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  constraints subdomain: ['', 'www'] do
+    resources :users do 
+      resources :phones
+    end
+    root 'users#index'
+  end
 end
