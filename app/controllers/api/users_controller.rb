@@ -1,5 +1,6 @@
 module Api
-  class UsersController < ApplicationController
+  class UsersController < Api::ApplicationController
+    before_action :authenticate_user
     before_action :set_user, only: [:show, :update, :destroy]
 
     def index
@@ -8,6 +9,7 @@ module Api
     end
 
     def show
+      Rails.logger.info current_user.inspect
       render json: @user #, serializer: UserSerializer
     end
 
